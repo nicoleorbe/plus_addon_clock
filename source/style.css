@@ -8,6 +8,11 @@ footer {
 footer span {
   display: inline-block;
 }
+
+.form-select {
+  max-width: 200px;
+}
+
 .span-footer-name {
   background: linear-gradient(-225deg, #ff057c 0%, #8d0b93 50%, #321575 100%);
   color: white;
