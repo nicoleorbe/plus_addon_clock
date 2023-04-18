@@ -67,7 +67,7 @@ function myLocation(zone) {
     let apiKey = "AQUH9CHWDFME";
     let countryCode;
     fetch(
-      `http://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=${zone}`
+      `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=${zone}`
     )
       .then((response) => response.json())
       .then((data) => {
