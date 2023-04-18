@@ -1,71 +1,97 @@
-function resetPage() {
-  location.reload();
-}
+function updateTime() {
+  //My Location
+  let myElement = document.querySelector("#display-city");
+  if (myElement) {
+    let myDateElement = myElement.querySelector("#show-date");
+    let myTimeElement = myElement.querySelector("#show-time");
+    let zoneElement = myZone;
+    let myTime = moment().tz(`${zoneElement}`);
 
-//setInterval();
+    myDateElement.innerHTML = moment()
+      .tz(`${zoneElement}`)
+      .format("dddd, MMMM D, YYYY");
+    myTimeElement.innerHTML = moment()
+      .tz(`${zoneElement}`)
+      .format("h:mm:ss [<small>]A[</small>]");
+  }
 
-function myLocation(zone) {
-  if (zone) {
-    let myZone = document.querySelector("#show-my-location");
-    let myFlag = document.querySelector("#my-flag");
-    let myTime = document.querySelector("#show-my-time");
-    let myDate = document.querySelector("#show-my-date");
-    let myCountry = myCountryLocation.replace(/\s/g, "").split("");
-    let myCountryWord = myCountry.join("");
-    myTime.innerHTML = moment().tz(`${zone}`).format("h:mm:ss a");
-    myDate.innerHTML = moment().tz(`${zone}`).format("dddd, MMMM D, YYYY");
-    myZone.innerHTML = myCityLocation;
-    myFlag.innerHTML = "";
-    myFlag.src = `images/${myCountryWord}.png`;
+  // New York
+  let newYorkElement = document.querySelector("#display-new-york");
+  if (newYorkElement) {
+    let newYorkDateElement = newYorkElement.querySelector("#new-york-date");
+    let newYorkTimeElement = newYorkElement.querySelector("#new-york-time");
+    let newYorkTime = moment().tz("America/New_York");
+    newYorkDateElement.innerHTML = newYorkTime.format("dddd, MMMM D, YYYY");
+    newYorkTimeElement.innerHTML = newYorkTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
+  // London
+  let londonElement = document.querySelector("#display-london");
+  if (londonElement) {
+    let londonDateElement = londonElement.querySelector("#london-date");
+    let londonTimeElement = londonElement.querySelector("#london-time");
+    let londonTime = moment().tz("Europe/London");
+    londonDateElement.innerHTML = londonTime.format("dddd, MMMM D, YYYY");
+    londonTimeElement.innerHTML = londonTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
+  // Paris
+  let parisElement = document.querySelector("#display-paris");
+  if (parisElement) {
+    let parisDateElement = parisElement.querySelector("#paris-date");
+    let parisTimeElement = parisElement.querySelector("#paris-time");
+    let parisTime = moment().tz("Europe/Paris");
+    parisDateElement.innerHTML = parisTime.format("dddd, MMMM D, YYYY");
+    parisTimeElement.innerHTML = parisTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
   }
 }
 
-function updateCity(event) {}
+function myLocation(zone) {
+  if (zone) {
+    //let myZone = `${zone}`;
+    let myCity = document.querySelector("#show-location");
+    let myFlag = document.querySelector("#flag");
+    let myTime = document.querySelector("#show-time");
+    let myDate = document.querySelector("#show-date");
+    myTime.innerHTML = moment().tz(`${zone}`).format("h:mm:ss a");
+    myDate.innerHTML = moment().tz(`${zone}`).format("dddd, MMMM D, YYYY");
+    myCity.innerHTML = myCityLocation;
+    myFlag.innerHTML = "";
 
-// function showCurrentDate(event) {
-//   let selectedOption = event.target.options[event.target.selectedIndex];
-//   let currentDate = "";
-//   if (event.target.value === "my-location") {
-//     resetPage();
-//   } else if (event.target.value === "paris") {
-//     currentDate = moment()
-//       .tz("Europe/Paris")
-//       .format("dddd, MMMM D, YYYY h:mm A");
-//   } else if (event.target.value === "tokyo") {
-//     currentDate = moment().tz("Asia/Tokyo").format("dddd, MMMM D, YYYY h:mm A");
-//   } else if (event.target.value === "sydney") {
-//     currentDate = moment()
-//       .tz("Australia/Sydney")
-//       .format("dddd, MMMM D, YYYY h:mm A");
-//   } else if (event.target.value === "london") {
-//     currentDate = moment()
-//       .tz("Europe/London")
-//       .format("dddd, MMMM D, YYYY h:mm A");
-//   } else if (event.target.value === "new-york") {
-//     currentDate = moment()
-//       .tz("America/New York")
-//       .format("dddd, MMMM D, YYYY h:mm A");
-//   }
+    let apiKey = "AQUH9CHWDFME";
+    let countryCode;
+    fetch(
+      `http://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=${zone}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        let countryCode = data.countryCode.toLowerCase();
+        myFlag.src = `images/${countryCode}.png`;
+      })
+      .catch((error) => console.error(error));
 
-//   let dateElement = document.querySelector("#display-country");
-//   if (event.target.value === "my-location") {
-//     dataElement.innerHTML = "";
-//   }
-//   dateElement.innerHTML = currentDate;
-// }
+    return {
+      dateElement: myDate,
+      timeElement: myTime,
+      zoneElement: zone,
+    };
+  }
+}
 
 myCityLocation = null;
 myStateLocation = null;
 myCountryLocation = null;
+myZone = null;
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     function (position) {
-      let latitude = position.coords.latitude;
-      let longitude = position.coords.longitude;
-
-      console.log(latitude);
-      console.log(longitude);
       let geoAPIKey = "e9d4cfe75eda49729ab3361d039e85a9";
       fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${geoAPIKey}`)
         .then(function (response) {
@@ -79,9 +105,10 @@ if (navigator.geolocation) {
           myCityLocation = data.city;
           myStateLocation = data.state_prov;
           myCountryLocation = data.country_name;
+          myZone = data.time_zone.name;
           if (zoneName !== null) {
             myLocation(zoneName);
-            console.log(zoneName);
+            //console.log(zoneName);
           } else {
             // Handle undefined zone name
             let defaultLocation = "America/New_York";
@@ -111,5 +138,4 @@ if (navigator.geolocation) {
 updateTime();
 setInterval(updateTime, 1000);
 
-let countrySelect = document.querySelector("#select-country");
-countrySelect.addEventListener("change", updateCity);
+//console.log(moment.tz.names());

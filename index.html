@@ -11,71 +11,89 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data-1970-2030.min.js"></script>
     <title>Got the Time?⌚</title>
   </head>
   <body id="body">
     <div class="container">
-      <div class="shadow p-3 mb-5 mt-5 bg-body-tertiary rounded">
-        <h1>Clocks Around the World</h1>
+      <div
+        class="shadow p-3 mb-5 mt-5 bg-body-tertiary rounded"
+        id="container-clocks"
+      >
+        <h1>Around the World🌎</h1>
         <select class="form-select" name="select-country" id="select-country">
           <option value="">Select a Country</option>
           <option value="my-location" id="my-location">My Location</option>
           <option value="london">London 🇬🇧</option>
-          <option value="new-york">New York 🇺🇸</option>
+          <option value="America/New_York">New York 🇺🇸</option>
           <option value="paris">Paris 🇫🇷</option>
           <option value="tokyo">Tokyo 🇯🇵</option>
           <option value="sydney">Sydney 🇦🇺</option>
         </select>
-        <div class="row" id="display-clock">
-          <div class="row" id="display-my-location">
-            <div class="col-6" id="my-location-left">
-              <span class="show-location" id="show-my-location"
-                >My Location</span
-              >
-              <span id="show-my-flag"
-                ><img src="" alt="" id="my-flag" class="flag"
+        <div class="row" id="display-location">
+          <div class="row" id="display-city">
+            <div class="col-4" id="city-left">
+              <span class="location" id="show-location"></span>
+              <span id="show-flag"
+                ><img src="" alt="" class="flag" id="flag"
               /></span>
-              <br />
-              <span id="show-my-date">My Date</span>
             </div>
-            <div class="col-6" id="my-location-right">
-              <span id="show-my-time" class="time">My Time</span>
+            <div class="col-4" id="city-middle">
+              <span class="date" id="show-date"></span>
+            </div>
+            <div class="col-4" id="city-right">
+              <span class="time" id="show-time"></span>
             </div>
           </div>
-          <div class="row" id="display-clock">
-            <div class="col-6" id="clock-left">
-              <span class="show-clock" id="show-clock">London</span>
-              <span id="show-clock-flag"
-                ><img src="flag.png" alt="" id="clock-flag" class="flag"
+          <div class="row" id="display-london">
+            <div class="col-4" id="london-left">
+              <span class="location" id="london">London</span>
+              <span
+                ><img src="images/gb.png" alt="" class="flag" id="london-flag"
               /></span>
-              <br />
-              <span id="show-clock-date">Date</span>
             </div>
-            <div class="col-6" id="clock-right">
-              <span id="show-clock-time" class="time">Time</span>
+            <div class="col-4" id="london-middle">
+              <span class="date" id="london-date"></span>
+            </div>
+            <div class="col-4" id="london-right">
+              <span class="time" id="london-time"></span>
             </div>
           </div>
           <div class="row" id="display-new-york">
-            <div class="col-6" id="new-york-left"></div>
-            <div class="col-6" id="new-york-right"></div>
+            <div class="col-4" id="new-york-left">
+              <span class="location" id="new-york">New York</span>
+              <span
+                ><img
+                  src="images/us.png"
+                  alt=""
+                  class="flag"
+                  id="new-york-flag"
+              /></span>
+            </div>
+            <div class="col-4" id="new-york-middle">
+              <span class="date" id="new-york-date"></span>
+            </div>
+            <div class="col-4" id="new-york-right">
+              <span class="time" id="new-york-time"></span>
+            </div>
           </div>
+
           <div class="row" id="display-paris">
-            <div class="col-6" id="paris-left"></div>
-            <div class="col-6" id="paris-right"></div>
-          </div>
-          <div class="row" id="display-sydney">
-            <div class="col-6" id="sydney-left"></div>
-            <div class="col-6" id="sydney-right"></div>
-          </div>
-          <div class="row" id="display-tokyo">
-            <div class="col-6" id="sydney-tokyo"></div>
-            <div class="col-6" id="sydney-tokyo"></div>
+            <div class="col-4" id="paris-left">
+              <span class="location" id="paris">Paris</span>
+              <span
+                ><img src="images/fr.png" alt="" class="flag" id="paris-flag"
+              /></span>
+            </div>
+            <div class="col-4" id="paris-middle">
+              <span class="date" id="paris-date"></span>
+            </div>
+            <div class="col-4" id="paris-right">
+              <span class="time" id="paris-time"></span>
+            </div>
           </div>
         </div>
-        <h1 id="display-country"></h1>
       </div>
     </div>
 
@@ -96,6 +114,6 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
-    <script src="source/index.js"></script>
+    <script src="source/app.js"></script>
   </body>
 </html>
