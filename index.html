@@ -22,13 +22,59 @@
         <h1>Clocks Around the World</h1>
         <select class="form-select" name="select-country" id="select-country">
           <option value="">Select a Country</option>
-          <option value="my-location">My Location</option>
+          <option value="my-location" id="my-location">My Location</option>
           <option value="london">London 🇬🇧</option>
           <option value="new-york">New York 🇺🇸</option>
           <option value="paris">Paris 🇫🇷</option>
           <option value="tokyo">Tokyo 🇯🇵</option>
           <option value="sydney">Sydney 🇦🇺</option>
         </select>
+        <div class="row" id="display-clock">
+          <div class="row" id="display-my-location">
+            <div class="col-6" id="my-location-left">
+              <span class="show-location" id="show-my-location"
+                >My Location</span
+              >
+              <span id="show-my-flag"
+                ><img src="" alt="" id="my-flag" class="flag"
+              /></span>
+              <br />
+              <span id="show-my-date">My Date</span>
+            </div>
+            <div class="col-6" id="my-location-right">
+              <span id="show-my-time" class="time">My Time</span>
+            </div>
+          </div>
+          <div class="row" id="display-clock">
+            <div class="col-6" id="clock-left">
+              <span class="show-clock" id="show-clock">London</span>
+              <span id="show-clock-flag"
+                ><img src="flag.png" alt="" id="clock-flag" class="flag"
+              /></span>
+              <br />
+              <span id="show-clock-date">Date</span>
+            </div>
+            <div class="col-6" id="clock-right">
+              <span id="show-clock-time" class="time">Time</span>
+            </div>
+          </div>
+          <div class="row" id="display-new-york">
+            <div class="col-6" id="new-york-left"></div>
+            <div class="col-6" id="new-york-right"></div>
+          </div>
+          <div class="row" id="display-paris">
+            <div class="col-6" id="paris-left"></div>
+            <div class="col-6" id="paris-right"></div>
+          </div>
+          <div class="row" id="display-sydney">
+            <div class="col-6" id="sydney-left"></div>
+            <div class="col-6" id="sydney-right"></div>
+          </div>
+          <div class="row" id="display-tokyo">
+            <div class="col-6" id="sydney-tokyo"></div>
+            <div class="col-6" id="sydney-tokyo"></div>
+          </div>
+        </div>
         <h1 id="display-country"></h1>
       </div>
     </div>
@@ -50,6 +96,6 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
-    <script src="source/app.js"></script>
+    <script src="source/index.js"></script>
   </body>
 </html>
