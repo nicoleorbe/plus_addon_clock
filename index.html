@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="source/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Zilla+Slab+Highlight:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -22,18 +28,36 @@
         id="container-clocks"
       >
         <h1>Around the World🌎</h1>
-        <select class="form-select" name="select-country" id="select-country">
-          <option value="">Select a Country</option>
-          <option value="my-location" id="my-location">My Location</option>
-          <option value="london">London 🇬🇧</option>
-          <option value="America/New_York">New York 🇺🇸</option>
-          <option value="paris">Paris 🇫🇷</option>
-          <option value="tokyo">Tokyo 🇯🇵</option>
-          <option value="sydney">Sydney 🇦🇺</option>
-        </select>
-        <div class="row" id="display-location">
-          <div class="row" id="display-city">
-            <div class="col-4" id="city-left">
+        <div class="row align-items-center form-bar">
+          <div class="col-12" id="selection">
+            <select
+              class="form-select"
+              name="select-country"
+              id="select-country"
+            >
+              <option value="reset">Select a Country</option>
+              <option value="my-location" id="my-location">My Location</option>
+              <option value="Asia/Amman">Amman 🇯🇴</option>
+              <option value="Atlantic/Canary">Canary Islands 🇮🇨</option>
+              <option value="Europe/Rome">Rome 🇮🇹</option>
+              <option value="Australia/Sydney">Sydney 🇦🇺</option>
+              <option value="Pacific/Tahiti">Tahiti 🇵🇫</option>
+            </select>
+          </div>
+          <div id="btn-reset">
+            <!-- <div class="col-2">
+              <button type="button" class="btn btn-primary" id="reset">
+              Reset
+            </button>
+            </div> -->
+          </div>
+        </div>
+        <div class="row align-items-center" id="display-location">
+          <div class="row align-items-center" id="display-city">
+            <div
+              class="col-4 d-flex justify-content-center align-items-center"
+              id="city-left"
+            >
               <span class="location" id="show-location"></span>
               <span id="show-flag"
                 ><img src="" alt="" class="flag" id="flag"
@@ -46,58 +70,104 @@
               <span class="time" id="show-time"></span>
             </div>
           </div>
-          <div class="row" id="display-london">
-            <div class="col-4" id="london-left">
-              <span class="location" id="london">London</span>
+          <hr />
+
+          <div class="row align-items-center" id="display-location-one">
+            <div
+              class="col-4 d-flex justify-content-center align-items-center"
+              id="location-one-left"
+            >
+              <span class="location" id="location-one"></span>
               <span
-                ><img src="images/gb.png" alt="" class="flag" id="london-flag"
+                ><img src="" alt="" class="flag" id="location-one-flag"
               /></span>
             </div>
-            <div class="col-4" id="london-middle">
-              <span class="date" id="london-date"></span>
+            <div class="col-4" id="location-one-middle">
+              <span class="date" id="location-one-date"></span>
             </div>
-            <div class="col-4" id="london-right">
-              <span class="time" id="london-time"></span>
+            <div class="col-4" id="location-one-right">
+              <span class="time" id="location-one-time"></span>
             </div>
           </div>
-          <div class="row" id="display-new-york">
-            <div class="col-4" id="new-york-left">
-              <span class="location" id="new-york">New York</span>
+          <div
+            class="row align-items-center justify-content-center"
+            id="display-location-two"
+          >
+            <div
+              class="col-4 d-flex justify-content-center align-items-center"
+              id="location-two-left"
+            >
+              <span class="location mr-2" id="location-two"></span>
               <span
-                ><img
-                  src="images/us.png"
-                  alt=""
-                  class="flag"
-                  id="new-york-flag"
+                ><img src="" alt="" class="flag" id="location-two-flag"
               /></span>
             </div>
-            <div class="col-4" id="new-york-middle">
-              <span class="date" id="new-york-date"></span>
+            <div class="col-4" id="location-two-middle">
+              <span class="date" id="location-two-date"></span>
             </div>
-            <div class="col-4" id="new-york-right">
-              <span class="time" id="new-york-time"></span>
+            <div class="col-4" id="location-two-right">
+              <span class="time" id="location-two-time"></span>
             </div>
           </div>
 
-          <div class="row" id="display-paris">
-            <div class="col-4" id="paris-left">
-              <span class="location" id="paris">Paris</span>
+          <div class="row align-items-center" id="display-location-three">
+            <div
+              class="col-4 d-flex justify-content-center align-items-center"
+              id="location-three-left"
+            >
+              <span class="location" id="location-three"></span>
               <span
-                ><img src="images/fr.png" alt="" class="flag" id="paris-flag"
+                ><img src="" alt="" class="flag" id="location-three-flag"
               /></span>
             </div>
-            <div class="col-4" id="paris-middle">
-              <span class="date" id="paris-date"></span>
+            <div class="col-4" id="location-three-middle">
+              <span class="date" id="location-three-date"></span>
             </div>
-            <div class="col-4" id="paris-right">
-              <span class="time" id="paris-time"></span>
+            <div class="col-4" id="location-three-right">
+              <span class="time" id="location-three-time"></span>
+            </div>
+          </div>
+
+          <div class="row align-items-center" id="display-location-four">
+            <div
+              class="col-4 d-flex justify-content-center align-items-center"
+              id="location-four-left"
+            >
+              <span class="location" id="location-four"></span>
+              <span
+                ><img src="" alt="" class="flag" id="location-four-flag"
+              /></span>
+            </div>
+            <div class="col-4" id="location-four-middle">
+              <span class="date" id="location-four-date"></span>
+            </div>
+            <div class="col-4" id="location-four-right">
+              <span class="time" id="location-four-time"></span>
+            </div>
+          </div>
+
+          <div class="row align-items-center" id="display-location-five">
+            <div
+              class="col-4 d-flex justify-content-center align-items-center"
+              id="location-five-left"
+            >
+              <span class="location" id="location-five"></span>
+              <span
+                ><img src="" alt="" class="flag" id="location-five-flag"
+              /></span>
+            </div>
+            <div class="col-4" id="location-five-middle">
+              <span class="date" id="location-five-date"></span>
+            </div>
+            <div class="col-4" id="location-five-right">
+              <span class="time" id="location-five-time"></span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" id="footer">
       Built by <span class="span-footer-name">Nicole Orbe</span> and lots of
       <span class="span-footer-coffee">☕</span>
       and is
