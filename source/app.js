@@ -193,21 +193,30 @@ if (navigator.geolocation) {
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
+  let cityResultParse = "";
   let hello = "";
+  let homepage = "";
   if (event.target.value === "my-location") {
     cityTimeZone = moment.tz.guess();
+    cityResultParse = cityTimeZone.replace("_", " ").split("/")[1];
+    homepage = `https://en.wikipedia.org/wiki/${cityResultParse}`;
   } else if (event.target.value === "reset") {
     location.reload();
   } else if (event.target.value === "Europe/Rome") {
     hello = "ciao!";
+    homepage = "https://www.italia.it/en";
   } else if (event.target.value === "Pacific/Tahiti") {
     hello = "ia orana";
+    homepage = "https://tahititourisme.com/en-us/";
   } else if (event.target.value === "Australia/Sydney") {
     hello = "g'day!";
+    homepage = "https://www.sydney.com/us";
   } else if (event.target.value === "Atlantic/Canary") {
     hello = "hola!";
+    homepage = "https://www.hellocanaryislands.com/";
   } else if (event.target.value === "Asia/Amman") {
     hello = "مرحباً";
+    homepage = "https://www.laidbacktrip.com/posts/amman-things-to-do";
   }
   let cityName = cityTimeZone.replace("_", " ").split("/")[1];
   let cityTime = moment().tz(cityTimeZone);
@@ -229,7 +238,8 @@ function updateCity(event) {
       "h:mm:ss"
     )} <small>${cityTime.format("A")}</small></span>
   </div></div>
-  <div class="hello">${hello}</div>`;
+  <div class="hello">${hello}</div>
+  <div> <a href="${homepage}" target="_blank">Find out more</div>`;
 
   let buttonReset = document.querySelector("#btn-reset");
   let selectClass = document.querySelector("#selection");
